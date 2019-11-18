@@ -1,41 +1,48 @@
 ﻿import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Glyphicon, Nav, Navbar, NavItem } from 'react-bootstrap';
+import {  Nav, Navbar, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import './NavMenu.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {faCoffee} from "@fortawesome/free-solid-svg-icons"
 
-export class NavMenu extends Component {
-  displayName = NavMenu.name
+export default (props) => {
+const {name} = props;
 
-  render() {
     return (
+      <div>
       <Navbar inverse fixedTop fluid collapseOnSelect>
-        <Navbar.Header>
+        {/* <Navbar.Header>
           <Navbar.Brand>
             <Link to={'/'}>Planner</Link>
           </Navbar.Brand>
           <Navbar.Toggle />
-        </Navbar.Header>
+        </Navbar.Header> */}
         <Navbar.Collapse>
           <Nav>
             <LinkContainer to={'/'} exact>
               <NavItem>
-                <Glyphicon glyph='home' /> Home
+                <FontAwesomeIcon icon={faCoffee} /> Home
               </NavItem>
             </LinkContainer>
             <LinkContainer to={'/counter'}>
               <NavItem>
-                <Glyphicon glyph='education' /> Counter
+                <FontAwesomeIcon icon={faCoffee} /> Counter
               </NavItem>
             </LinkContainer>
             <LinkContainer to={'/fetchdata'}>
               <NavItem>
-                <Glyphicon glyph='th-list' /> Fetch data
+                <FontAwesomeIcon icon={faCoffee} /> Fetch data
+              </NavItem>
+            </LinkContainer>
+            <LinkContainer to={'/dash'}>
+              <NavItem>
+                <FontAwesomeIcon icon={faCoffee} /> Dash
               </NavItem>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+      </div>
     );
-  }
 }

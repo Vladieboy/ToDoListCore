@@ -1,22 +1,21 @@
-import React, { Component } from 'react';
-import { Col, Grid, Row } from 'react-bootstrap';
-import { NavMenu } from './NavMenu';
+import React, { useContext } from 'react';
+import {SelectedColor} from "../Context"
+import { Col, Container, Row } from 'react-bootstrap';
+import NavMenu from './NavMenu';
 
-export class Layout extends Component {
-  displayName = Layout.name
-
-  render() {
-    return (
-      <Grid fluid>
-        <Row>
-          <Col sm={3}>
-            <NavMenu />
-          </Col>
-          <Col sm={9}>
-            {this.props.children}
-          </Col>
-        </Row>
-      </Grid>
-    );
-  }
+export default (props) => {
+  const [color, setColor] = useContext(SelectedColor)
+const {name} = props
+  return (
+    <Container className="w-100 h-100" fluid style={{background: color.value}}>
+    <Row>
+      <Col  sm={3}>
+        <NavMenu />
+      </Col>
+      <Col sm={9}>
+        {props.children}
+      </Col>
+    </Row>
+  </Container>
+  )
 }

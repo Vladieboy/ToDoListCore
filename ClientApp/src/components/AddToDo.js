@@ -1,41 +1,30 @@
 
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 
-export default class AddToDo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-        Title: "",
-        Location: "",
-        Time: "",
-        Notify: 0,
-    };
+export default ({}) => {
+  // const dateObj = new Date();
+  // const date = `${dateObj.getFullYear()}-${dateObj.getMonth() + 1}-${dateObj.getDate()}`
+ const [state, setState] = useState({
+  Title: "",
+      Location: "",
+      Time: "",
+      Notify: 0,
+ })
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-
-  }
-
-//   incrementCounter() {
-//     this.setState({
-//       currentCount: this.state.currentCount + 1
-//     });
-//   }
-
-  handleChange(e) {
-    this.setState({
+  const handleChange = (e) => {
+    setState({
     [e.target.name]: e.target.value
     })
   }
 
-  handleSubmit(){
-      console.log(this.state)
+ const handleSubmit = () =>{
+      console.log(state)
 
 const data = JSON.stringify({
-    Title: this.state.Title,
-    Location: this.state.Location,
-    Time: this.state.Time,
-    Notify: this.state.Notify
+    Title: state.Title,
+    Location: state.Location,
+    Time: state.Time,
+    Notify: state.Notify
 })
 
 console.log(data)
@@ -61,19 +50,19 @@ console.log(data)
   }
 
 
-  render() {
+  
     return (
         <form>
         Title:<br/>
-         <input type="text"  onBlur={(e) => this.handleChange(e)} name="Title" /><br/>
+         <input type="text"  onBlur={(e) => handleChange(e)} name="Title" /><br/>
         Location:<br/>
-         <input type="text" onBlur={(e) => this.handleChange(e)} name="Location" /><br/>
+         <input type="text" onBlur={(e) => handleChange(e)} name="Location" /><br/>
         Notify:<br/>
-         <input type="number" onBlur={(e) => this.handleChange(e)} name="Notify" /><br/>
+         <input type="number" onBlur={(e) => handleChange(e)} name="Notify" /><br/>
         Time:<br/>
-         <input type="date"  onBlur={(e) => this.handleChange(e)} name="Time" /><br/>
-         <button onClick={this.handleSubmit}>Submit</button>
+         <input type="date"  onBlur={(e) => handleChange(e)} name="Time" /><br/>
+         <button onClick={handleSubmit}>Submit</button>
                </form>
     );
-  }
+  
 }
